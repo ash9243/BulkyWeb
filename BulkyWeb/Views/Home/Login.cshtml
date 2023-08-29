@@ -1,0 +1,27 @@
+﻿@model LoginModel
+
+<div class="container">
+    <div class="card">
+        <h1>Login</h1>
+
+        <div class="row">
+            <div class="col-sm-4 mx-auto">
+                <form asp-controller="Home" asp-action="HandleForm" method="post">
+                    <div class="form-group mb-4">
+                        <label for="email">Email</label>
+                        <input asp-for="Email" id="email" class="form-control" type="text" name="Email" required />
+                    </div>
+
+
+                    <div class="form-group mb-4">
+                        <label for="password">Password</label>
+                        <input asp-for="Password" id="password" class="form-control" type="password" name="Password" required />
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100 mb-4">Login</button>
+
+                </form>
+            </div>
+         </div>
+     </div>
+</div>
