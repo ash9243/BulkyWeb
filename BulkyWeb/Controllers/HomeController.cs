@@ -7,10 +7,12 @@ namespace BulkyWeb.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
+    private readonly List<LoginModel> _userCredentials;
 
     public HomeController(ILogger<HomeController> logger)
     {
         _logger = logger;
+        _userCredentials = new List<LoginModel>();
     }
 
     public IActionResult Index()
@@ -35,7 +37,11 @@ public class HomeController : Controller
 
     public void HandleForm(LoginModel data)
     {
-
+        _userCredentials.Add(data);
+        Console.WriteLine($"data {data}");
+        ModelPrinter.PrintModel(data);
+        Console.WriteLine($"_userCredentials {_userCredentials}");
+        ModelPrinter.PrintModel(_userCredentials);
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
