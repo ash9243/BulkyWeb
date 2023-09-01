@@ -35,13 +35,19 @@ public class HomeController : Controller
         return View();
     }
 
-    public void HandleForm(LoginModel data)
+    [HttpPost]
+    public IActionResult HandleForm(LoginModel data)
     {
         _userCredentials.Add(data);
         Console.WriteLine($"data {data}");
         ModelPrinter.PrintModel(data);
         Console.WriteLine($"_userCredentials {_userCredentials}");
-        ModelPrinter.PrintModel(_userCredentials);
+
+        foreach(LoginModel item in _userCredentials){
+            ModelPrinter.PrintModel(item);
+        }
+
+        return RedirectToAction("Index");
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
